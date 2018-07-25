@@ -1,0 +1,97 @@
+ACCOUNT
+-----------------------
+ID PK //Student/Faculty No. - Admin No. is 1
+Username
+Password
+Type 							//Administrator/Faculty/Student
+
+BUILDING
+----------------------
+ID PK
+Name 							// College of Science
+Code 							// COS
+
+COLLEGE
+----------------------
+ID PK
+Name 							// College of Science and Computer Studies
+Code 							// CSCS
+
+COURSE
+----------------------
+ID PK
+Name 							// Bachelor of Science in Information Technology
+Code 							// BIT
+CollegeID FK = College.ID
+YearCourse 						// Number of year of course
+
+CURRICULUM
+----------------------
+ID PK
+CourseID FK = Course.ID
+SubjectID FK = Subject.ID
+Prerequisite 					// Subject.ID of prereq subjects (separated by comma)
+Year
+Term							// 1st Semester, 2nd Semester, Summer
+
+DEPARTMENT
+----------------------
+ID PK
+Name
+Code
+CollegeID FK = College.ID
+
+FACULTY
+----------------------
+ID FK = Account.ID 				// For Faculty Type Accounts
+FirstName
+MiddleName
+LastName
+BirthDate
+Gender
+Department FK = Department.ID
+
+GRADE
+----------------------
+ID PK
+StudentID FK = Account.ID 		// For Student Type Accounts
+SubjectID FK = Subject.ID
+Grade
+
+ROOM
+----------------------
+ID PK
+BuildingID FK = Building.ID
+Name 							// 101, 102, 103, nth
+
+SCHEDULE
+----------------------
+ID PK
+StudentID FK = Student.ID
+SubjectID FK = Subject.ID
+RoomID FK = Room.ID
+
+SECTION
+----------------------
+ID PK
+Name 							// 1, 2, 3, 4
+FacultyID FK = Account.ID
+
+STUDENT
+----------------------
+ID FK = Account.ID 				// For Student Type Accounts
+FirstName
+MiddleName
+LastName
+BirthDate
+Gender
+CourseID FK = Course.ID
+Year
+Section FK = Section.ID
+
+SUBJECT
+----------------------
+ID PK
+Name
+Code
+Units
